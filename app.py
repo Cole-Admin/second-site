@@ -58,5 +58,31 @@ def home():
         query=query
     )
 
+"""
+Deploy cancelled
+==> Deploying...
+==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+Menu
+==> Running 'gunicorn app:app'
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 644-501-992
+127.0.0.1 - - [15/Apr/2026 14:03:28] "HEAD / HTTP/1.1" 200 -
+==> No open ports detected on 0.0.0.0, continuing to scan...
+==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+==> No open ports detected on 0.0.0.0, continuing to scan...
+==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+==> No open ports detected on 0.0.0.0, continuing to scan...
+==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+==> No open ports detected on 0.0.0.0, continuing to scan...
+==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+"""
+import os
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
