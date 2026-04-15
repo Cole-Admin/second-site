@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COLE'S LEAUGE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="topbar">
+    🏆 COLE'S LEAGUE
+</div>
+
+<div class="container">
+
+    <!-- SEARCH -->
+    <div class="card search">
+        <form method="POST">
+            <input type="text" name="ime" placeholder="🔍 Pretraži klub...">
+            <button>Search</button>
+        </form>
+    </div>
+
+    <!-- RESULT -->
+    {% if search %}
+    <div class="card result">
+        <div class="club-title">⚽ {{ search.name }}</div>
+
+        <div class="stats">
+            <div><span>🏟</span><b>{{ search.matches }}</b><small>Matches</small></div>
+            <div><span>⚽</span><b>{{ search.goals }}</b><small>Goals</small></div>
+            <div><span>🥅</span><b>{{ search.conceded }}</b><small>Conceded</small></div>
+            <div><span>🏆</span><b>{{ search.points }}</b><small>Points</small></div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- TABLE -->
+    <div class="card table-card">
+        <h2>🏆 League Table</h2>
+
+        <div class="table">
+            <div class="row header">
+                <div>#</div>
+                <div>Team</div>
+                <div>PTS</div>
+                <div>GD</div>
+            </div>
+
+            {% for t in table %}
+            <div class="row">
+                <div>{{ loop.index }}</div>
+                <div class="team">{{ t.name }}</div>
+                <div class="pts">{{ t.points }}</div>
+                <div>{{ t.gd }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
